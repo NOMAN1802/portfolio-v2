@@ -5,8 +5,17 @@ import {Link as ScrollLink} from "react-scroll";
 import RotatingShape from "./RotatingShape";
 import Header from "./Header";
 import Stats from "./Stats/Stats";
+import { FaDownload } from "react-icons/fa";
+
 
 const Hero = () => {
+  const handleDownloadResume = () => {
+    const url = "/assets/resume/resume.pdf";
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "Noman_Resume.pdf";
+    anchor.click();
+}
   return (
     <section className="h-[800px] relative bg-accent/10 xl:bg-white" id="home">
       {/* Header */}
@@ -35,9 +44,16 @@ const Hero = () => {
             performance.
           </p>
 
-          <ScrollLink to="contact" smooth>
-           <button className="btn btn-accent mb-8">Contact me</button>
-          </ScrollLink>
+           {/* Buttons Wrapper */}
+           <div className="flex gap-4 mb-8"> {/* Flex container with gap between buttons */}
+            <ScrollLink to="contact" smooth>
+              <button className="btn btn-accent">Contact me</button>
+            </ScrollLink>
+
+            <button onClick={handleDownloadResume} className="btn btn-accent flex items-center gap-2">
+              Resume <FaDownload />
+            </button>
+          </div>
 
           {/* stats */}
 

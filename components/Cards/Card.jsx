@@ -47,8 +47,9 @@ const Card = ({
                 {type === "skills" ? (
 
                 //    render icon for skills 
-                   <div>
-                    <div>{icon}</div>
+                   <div className='w-max xl:w-[300px] h-full relative flex 
+                   items-center justify-center'>
+                    <div className='text-5xl text-primary/90'>{icon}</div>
                    </div>
                 ) : (
                     // render the logo for education and experience

@@ -19,7 +19,7 @@ const About = () => {
             <div className="rounded-tl-[8px] rounded-tr-[120px]
             w-full bg-[#e5f8f6] min-h-[480px] flex items-end justify-center">
               <Image src="/assets/about/about.png" width={350} height={470}
-              quality={100} property alt=""
+              quality={100} property='true' alt=""
               />
             </div>
             {/* rotating shape */}
