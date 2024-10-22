@@ -101,15 +101,7 @@ const LoginPage = () => {
             <button className="text-xs hover:underline hover:text-rose-500 text-default-400">
               Forgot password?
             </button>
-            <p className="text-xl text-default-600 my-4">OR</p>
-            <Link href="/register">
-              <p className="mt-4 text-center">
-                Not registered?{" "}
-                <span className="text-default-400 hover:underline cursor-pointer">
-                  Create an account
-                </span>
-              </p>
-            </Link>
+            
           </div>
         </form>
       </div>
