@@ -1,12 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
+
+
+import React, { useEffect } from "react";
 import { BsUpload } from "react-icons/bs";
 import dynamic from "next/dynamic";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -22,11 +23,11 @@ const ReactQuill = dynamic(() => import("react-quill"), {
 });
 
 import "react-quill/dist/quill.snow.css";
+import { FaTimes } from "react-icons/fa";
 
 const categoryOptions = ["frontend", "fullstack"];
 
-const UpdateProjectModal = ({ projectData, buttonText, buttonClassName, onUpdate, handleImageChange, imagePreviews, isLoading }) => {
-  const [open, setOpen] = useState(false);
+const UpdateProjectModal = ({ isOpen, onClose, projectData, onSubmit, handleImageChange, imagePreviews, isLoading, removeImage }) => {
   const methods = useForm();
 
   useEffect(() => {
@@ -40,15 +41,12 @@ const UpdateProjectModal = ({ projectData, buttonText, buttonClassName, onUpdate
       ...data,
       projectDetails: DOMPurify.sanitize(data.projectDetails),
     };
-    onUpdate(sanitizedData, methods.reset);
-    setOpen(false);
+    onSubmit(sanitizedData, methods.reset);
+    onClose(); // Close modal after submission
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button className={buttonClassName}>{buttonText}</Button>
-      </DialogTrigger>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Update Project</DialogTitle>
@@ -96,25 +94,46 @@ const UpdateProjectModal = ({ projectData, buttonText, buttonClassName, onUpdate
             <Input {...methods.register("liveLink")} placeholder="Enter live project link" />
 
             <div>
-              <label className="cursor-pointer bg-default-500 text-primary py-2 px-4 rounded-md hover:bg-default-600 transition duration-300">
+              <label className="cursor-pointer bg-accent/20 text-primary py-2 px-4 rounded-md hover:bg-default-600 transition duration-300">
                 <BsUpload className="inline-block mr-2" />
                 Choose File
-                <input multiple accept="image/*" className="hidden" name="image" type="file" onChange={handleImageChange} />
+                <input
+                  multiple
+                  accept="image/*"
+                  className="hidden"
+                  name="image"
+                  type="file"
+                  onChange={handleImageChange}
+                />
               </label>
             </div>
 
-            {imagePreviews?.length > 0 && (
+            {imagePreviews.length > 0 && (
               <div className="flex gap-5 my-5 flex-wrap">
-                {imagePreviews?.map((imageDataUrl, index) => (
-                  <div key={index} className="relative size-48 rounded-xl border-2 border-dashed border-default-300 p-2">
-                    <img alt="item" className="h-full w-full object-cover object-center rounded-md" src={imageDataUrl} />
+                {imagePreviews.map((imageUrl, index) => (
+                  <div
+                    key={index}
+                    className="relative size-48 rounded-xl border-2 border-dashed border-default-300 p-2"
+                  >
+                    <img
+                      alt="item"
+                      className="h-full w-full object-cover object-center rounded-md"
+                      src={imageUrl}
+                    />
+                    <button
+                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition duration-300"
+                      type="button"
+                      onClick={() => removeImage(index)}
+                    >
+                      <FaTimes size={12} />
+                    </button>
                   </div>
                 ))}
               </div>
             )}
 
             <DialogFooter>
-              <Button variant="ghost" type="button" onClick={() => setOpen(false)}>
+              <Button variant="ghost" type="button" onClick={onClose}>
                 Cancel
               </Button>
               <Button type="submit" disabled={isLoading}>

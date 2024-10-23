@@ -98,3 +98,11 @@ export const getAllProjects = async (type, category) => {
   
     return res.json();
   };
+
+  export const getProject = async (id) => {
+    const res = await fetch(`${envConfig.baseApi}/projects/${id}`, {
+      cache: "no-store",
+    });
+  
+    return res.json();
+  };

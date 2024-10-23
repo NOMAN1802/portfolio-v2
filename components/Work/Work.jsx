@@ -1,48 +1,21 @@
+"use client"
 import {useState} from "react";
 import {motion,AnimatePresence } from "framer-motion";
 import {Tabs,TabsContent,TabsList,TabsTrigger} from "@/components/ui/tabs";
 import AnimatedText from "../AnimatedText ";
 import WorkItem from "./WorkItem";
+import { useGetAllProjects } from "@/hooks/project.hook";
 
-// sample data for projects with various categories
-const data = [
-
-  {
-    
-    category: "frontend",
-    image: "/assets/work/thumb-3.png",
-    title:"Velox App"
-  },
-  {
-    
-    category: "frontend",
-    image: "/assets/work/thumb-4.png",
-    title:"Quantum Portfolio"
-  },
-  {
-    
-    category: "frontend",
-    image: "/assets/work/thumb-5.png",
-    title:"Synergy App UI"
-  },
-  {
-  
-    category: "fullstack",
-    image: "/assets/work/thumb-6.png",
-    title:"Apollo Travel Platform"
-  },
-  {
-    
-    category: "fullstack",
-    image: "/assets/work/thumb-7.png",
-    title:"Horizon SaaS Dadhboard"
-  },
-]
 
 const Work = () => {
+
+  const { data: myProjects, isLoading } = useGetAllProjects();
+  const data = myProjects?.data?.projects;
+  console.log(data);
+
   // execute unique categories from the data
 
-  const uniqueCategories = Array.from(new Set(data.map((item)=> item.category ))
+  const uniqueCategories = Array.from(new Set(data?.map((item)=> item.category ))
 );
 
 // create tab data with "all" category and unique categories from data
@@ -59,8 +32,8 @@ const [visibleItem , setVisibleItem] = useState(6);
 
 const filterWork = 
 tabValue === "all"
-? data.filter((item) => item.category !== "all")
-: data.filter((item) => item.category === tabValue);
+? data?.filter((item) => item.category !== "all")
+: data?.filter((item) => item.category === tabValue);
 
 const loadMoreItems = () => {
   // adjust the number to control how many items are loaded at a time
@@ -77,7 +50,7 @@ return (
           {/* render tab trigger */}
           <TabsList className="max-w-max h-full mb-[30px] flex flex-col md:flex-row
           gap-4 md:gap-0">
-            {tabData.map((item,index)=> {
+            {tabData?.map((item,index)=> {
               return (
               <TabsTrigger value={item.category}
                key={index} 
@@ -95,7 +68,7 @@ return (
          <TabsContent value={tabValue} className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-[30px]">
               <AnimatePresence>
-                {filterWork.slice(0,visibleItem).map((item,index) =>(
+                {filterWork?.slice(0,visibleItem).map((item,index) =>(
                   <motion.div key={index}
                    initial={{opacity: 0,y:20}}
                    animate={{opacity: 1, y:0}}
@@ -107,7 +80,7 @@ return (
               </AnimatePresence>
             </div>
             {/* Load more button */}
-            {visibleItem < filterWork.length && (
+            {visibleItem < filterWork?.length && (
 
               <div className="flex justify-center mt-12">
                 <button onClick={loadMoreItems} className="btn btn-accent">

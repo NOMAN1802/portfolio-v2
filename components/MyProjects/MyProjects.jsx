@@ -1,7 +1,4 @@
-"use client";
 import React, { useState } from 'react';
-import { useUpdateProject, useDeleteProject, useGetAllProjects } from '@/hooks/project.hook';
-import { useUser } from '@/context/user.provider';
 import {
   Table,
   TableBody,
@@ -23,6 +20,8 @@ import { FaEdit, FaTrash, FaGithub, FaLink } from 'react-icons/fa';
 import Link from 'next/link';
 import UpdateProjectModal from '../UpdateProjectModal/UpdateProjectModal';
 import DeleteProjectModal from '../DeleteProjectModal/DeleteProjectModal';
+import { useUser } from '@/context/user.provider';
+import { useDeleteProject, useGetAllProjects, useUpdateProject } from '@/hooks/project.hook';
 
 const MyProjects = () => {
   const { user } = useUser();
@@ -32,15 +31,15 @@ const MyProjects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [imageFile, setImageFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imageFiles, setImageFiles] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
   const projects = myProjects?.data?.projects;
-  console.log(projects)
 
   const handleUpdate = (project) => {
     setSelectedProject(project);
     setIsUpdateModalOpen(true);
-    setImagePreview(project.image);
+    setImagePreviews(project.images || []); 
+    setImageFiles([]); 
   };
 
   const handleUpdateSubmit = (data, resetForm) => {
@@ -49,12 +48,11 @@ const MyProjects = () => {
     const formData = new FormData();
     const projectData = {
       ...data,
-     
     };
     formData.append("data", JSON.stringify(projectData));
 
-    if (imageFile) {
-      formData.append("projectImage", imageFile);
+    for (let image of imageFiles) {
+      formData.append("projectImages", image);
     }
 
     updateProject(
@@ -64,23 +62,32 @@ const MyProjects = () => {
           resetForm();
           setSelectedProject(null);
           setIsUpdateModalOpen(false);
-          setImageFile(null);
-          setImagePreview(null);
+          setImageFiles([]);
+          setImagePreviews([]);
         },
       }
     );
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImageFile(file);
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+    const files = e.target.files;
+    if (files) {
+      const newImageFiles = Array.from(files);
+      setImageFiles((prev) => [...prev, ...newImageFiles]);
+
+      newImageFiles.forEach((file) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImagePreviews((prev) => [...prev, reader.result]);
+        };
+        reader.readAsDataURL(file);
+      });
     }
+  };
+
+  const removeImage = (index) => {
+    setImagePreviews((prev) => prev.filter((_, i) => i !== index));
+    setImageFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleDelete = (project) => {
@@ -98,16 +105,6 @@ const MyProjects = () => {
       });
     }
   };
-
-  if (isLoading) {
-    return <div className="flex justify-center items-center h-48">
-      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900"></div>
-    </div>;
-  }
-
-  if (!projects?.length) {
-    return <p className="text-center py-4">You haven't created any projects yet.</p>;
-  }
 
   return (
     <div className="w-full">
@@ -228,21 +225,22 @@ const MyProjects = () => {
       {selectedProject && (
         <>
           <UpdateProjectModal
-            isOpen={isUpdateModalOpen}
+            isOpen={isUpdateModalOpen} 
             onClose={() => setIsUpdateModalOpen(false)}
-            project={selectedProject}
-            onSubmit={handleUpdateSubmit}
+            projectData={selectedProject} 
+            onSubmit={handleUpdateSubmit} 
             isLoading={isUpdating}
             handleImageChange={handleImageChange}
-            imagePreview={imagePreview}
+            imagePreviews={imagePreviews} 
+            removeImage={removeImage} 
           />
           <DeleteProjectModal
-            isOpen={isDeleteModalOpen}
-            onClose={() => setIsDeleteModalOpen(false)}
-            project={selectedProject}
-            onConfirm={confirmDelete}
-            isLoading={isDeleting}
-          />
+         isOpen={isDeleteModalOpen} 
+         onClose={() => setIsDeleteModalOpen(false)} 
+         projectName={selectedProject?.title} 
+         onSubmit={confirmDelete} 
+         isLoading={isDeleting} 
+       />
         </>
       )}
     </div>

@@ -106,7 +106,7 @@ const AddProjectModal = ({
               <Controller
                 control={methods.control}
                 name="projectDetails"
-                defaultValue="" // Set a default value
+                defaultValue="" 
                 render={({ field }) => (
                   <ReactQuill
                     theme="snow"
@@ -133,7 +133,7 @@ const AddProjectModal = ({
 
             {/* Image Upload */}
             <div>
-              <label className="cursor-pointer bg-default-500 text-primary py-2 px-4 rounded-md hover:bg-default-600 transition duration-300">
+              <label className="cursor-pointer bg-accent/20 text-primary py-2 px-4 rounded-md hover:bg-default-600 transition duration-300">
                 <BsUpload className="inline-block mr-2" />
                 Choose File
                 <input
