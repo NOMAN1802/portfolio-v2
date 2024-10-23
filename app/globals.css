@@ -32,11 +32,11 @@
   .btn-accent {
     @apply bg-accent hover:bg-accent-hover text-white;
   }
-  .input,
-  .textarea {
-    @apply w-full outline-none border-[#d0d5dd] focus:border-accent
+  .input, .textarea {
+    @apply w-full outline-none border-2 border-[#d0d5dd] focus:border-accent
     rounded-lg placeholder:text-[#667085];
   }
+  
   .input {
     @apply h-12 px-[14px];  
   }

@@ -2,7 +2,7 @@ import React from 'react'
 import LoginPage from './login/page';
 import RegisterPage from './register/page';
 
-const page = () => {
+const Authorization= () => {
   return (
     <div className='container p-24 m-8'>
         <LoginPage/>
@@ -11,4 +11,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Authorization;

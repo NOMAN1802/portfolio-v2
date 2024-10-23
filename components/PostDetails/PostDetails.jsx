@@ -1,9 +1,8 @@
 "use client";
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { FaGithub, FaLink } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaLink } from 'react-icons/fa';
 import DOMPurify from 'dompurify';
-import { useUser } from '@/context/user.provider';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import Link from 'next/link';
 import AnimatedText from '../AnimatedText ';

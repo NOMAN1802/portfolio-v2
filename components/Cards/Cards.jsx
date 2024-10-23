@@ -2,9 +2,9 @@
 import Card from "./Card";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs';
 import {motion , AnimatePresence} from "framer-motion";
-import {FaHtml5, FaCss3,FaJs,FaReact, FaWordpress,FaFigma } from 'react-icons/fa';
+import {FaHtml5, FaCss3,FaJs,FaReact } from 'react-icons/fa';
 import { DiMongodb } from "react-icons/di";
-import { SiExpress, SiRedux } from "react-icons/si";
+import { SiExpress, SiRedux, SiTypescript } from "react-icons/si";
 import { RiNextjsFill } from "react-icons/ri";
 
 const journey = [
@@ -12,42 +12,42 @@ const journey = [
     {
         type: "experience",
         company:"Private",
-        logoUrl: "/assets/journey/experience/logo-1.svg",
-        position: "Web Developer",
+        logoUrl: "/assets/journey/experience/private.png",
+        position: "Mern Stack Developer",
         duration: "Sept 2023 - present",
-        description: "Built website and web app using Next.js,Tailwind CSS, and Javascript.Worked on scaleable,user firendly solution"
+        description: "Built Full stack website using Next.js,Tailwind CSS,Typescript,Express and Mongoose.Worked on scaleable,user firendly solution"
     },
 
     {
         type: "experience",
         company:"a2i",
-        logoUrl: "/assets/journey/experience/logo-2.svg",
-        position: "Frontend Developer",
-        duration: "Jan 2022 - Sept 2023 ",
-        description: "Developed responsive website with HTML,CSS and Javascript.Ensure seamless user experiences."
+        logoUrl: "/assets/journey/experience/a2i.png",
+        position: "Young Professional",
+        duration: "Sept 2022 - Jan 2023 ",
+        description: "Manage (TOR)-Term Of Referance -(Data model,ER Diagram,Sequence Diagram) for software development."
     },
 
     
     
     // edducation
-   
+    {
+        type: "education",
+        institution:"Daffodil International University",
+        logoUrl: "/assets/journey/education/diu.png",
+        position: "Bsc In CSE",
+        duration: "May 2016 - Jun 2021",
+        description: "Complete undergradution degree in computer science and engineering form Daffodil International University"
+    },
     {
         type: "education",
         institution:"Programming Hero",
-        logoUrl: "/assets/journey/education/logo-1.svg",
+        logoUrl: "/assets/journey/education/p-hero.png",
         position: "Web Develoment",
         duration: "Jan 2023 - Jun 2023",
         description: "Learning Mern Stack development concept,focusing on React ,Node.js and APIs. Completed hands-on projects to solidify skills"
     },
 
-    {
-        type: "education",
-        institution:"Daffodil International University",
-        logoUrl: "/assets/journey/education/institution.svg",
-        position: "Bsc In CSE",
-        duration: "May 2016 - Jun 2021",
-        description: "Complete undergradution degree in computer science and engineering form Daffodil International University"
-    },
+  
 
     // skills
 
@@ -55,7 +55,7 @@ const journey = [
         type: "skills",
         name:"HTML",
         icon: <FaHtml5/>,
-        duration: "Learn In 2020",
+        duration: "Learn In 2022",
         description: "Crafted structured web content using HTML effectively for mordern website,ensuring semantic markup and accessibility."
     },
 
@@ -64,7 +64,7 @@ const journey = [
         name:"CSS",
         icon: <FaCss3/>,
         position: "Bsc In CSE",
-        duration: "Learn In 2020",
+        duration: "Learn In 2022",
         description: "CSS (Cascading Style Sheets) is used to style and design web pages, controlling layout, colors, fonts, and responsiveness."
     },
     
@@ -72,9 +72,18 @@ const journey = [
         type: "skills",
         name:"Javascript",
         icon: <FaJs/>,
-        duration: "Learn In 2021",
+        duration: "Learn In 2022",
         description: "JavaScript is a versatile programming language used to create interactive, dynamic web applications and enhance user experiences."
     },
+    
+    {
+        type: "skills",
+        name:"TypeScript",
+        icon: <SiTypescript />,
+        duration: "Learn In 2024",
+        description: "To make my projects type sequerei lerned typescript and implement it in my project.It  is a superset of JavaScript, meaning it extends JavaScript by adding static types"
+    },
+    
     
     {
         type: "skills",
@@ -83,21 +92,8 @@ const journey = [
         duration: "Learn In 2023",
         description: "React is a JavaScript library for building dynamic, component-based user interfaces with efficient rendering and state management."
     },
-    {
-        type: "skills",
-        name:"Wordpress",
-        icon: <FaWordpress/>,
-        duration: "Learn In 2024",
-        description: "WordPress is a popular content management system (CMS) for building websites, offering customization through themes and plugins."
-    },
+   
 
-    {
-        type: "skills",
-        name:"Figma",
-        icon: <FaFigma/>,
-        duration: "Learn In 2024",
-        description: "Figma is a collaborative design tool for creating user interfaces, wireframes, prototypes, and visual assets online."
-    },
     {
         type: "skills",
         name:"Next Js",
@@ -126,7 +122,7 @@ const journey = [
         duration: "Learn In 2023",
         description: "MongoDB is a NoSQL database that stores data in flexible, JSON-like documents for scalable, high-performance applications."
     },
-    
+   
     
 
 ]

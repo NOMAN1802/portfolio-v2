@@ -39,10 +39,11 @@ const About = () => {
               src="/assets/about/shape-1.svg" 
               width={160} 
               height={160}
-              alt=""/>
+              alt=""
+              />
               </motion.div>
               <div className="absolute text-center text-white">
-              <div className="text-5xl font-bold leading-none">3+</div>
+              <div className="text-5xl font-bold leading-none">1+</div>
               <div className="leading-none text-center">
                 Years of <br /> Experience
               </div>
