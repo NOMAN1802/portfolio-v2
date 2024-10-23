@@ -11,11 +11,6 @@ export const adminLinks = [
     icon: "IoBagAddSharp",
   },
   {
-    href: "/dashboard/manage-skills",
-    label: "Manage Skills",
-    icon: "FaUserEdit",
-  },
-  {
     href: "/dashboard/manage-projects",
     label: "Manage Projects",
     icon: "CgWebsite",

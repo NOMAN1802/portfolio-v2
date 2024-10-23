@@ -1,5 +1,5 @@
 "use client"
-import {Link as ScrollLink} from "react-scroll";
+
 import Logo from "./Logo";
 import Nav from "./Nav";
 import Socials from "./Socials";

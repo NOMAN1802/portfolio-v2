@@ -14,6 +14,9 @@ const links = [
         name: "work",
     },
     {
+        name: "blog",
+    },
+    {
         name: "contact",
     },
 ];

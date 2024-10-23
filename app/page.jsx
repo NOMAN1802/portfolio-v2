@@ -1,5 +1,6 @@
 "use client"
 import About from '@/components/About'
+import Blog from '@/components/Blog/Blog'
 import Contact from '@/components/Contact'
 import FixedMenu from '@/components/FixedMenu'
 import Hero from '@/components/Hero'
@@ -29,6 +30,7 @@ const Home = () => {
       <About/>
       <Journey/>
       <Work/>
+      <Blog/>
       <Contact/>
 
       {/* temporary div */}

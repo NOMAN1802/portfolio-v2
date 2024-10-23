@@ -1,31 +1,31 @@
 "use client"
 import Container from '@/components/Container/Container';
-import ProjectDetails from '@/components/ProjectDetails/ProjectDetails';
-import { getProject } from '@/services/ProjectService';
+import PostDetails from '@/components/PostDetails/PostDetails';
+import { getPost } from '@/services/PostService';
+
 import React, { useEffect, useState } from 'react'
 
-const SingleProjectPage = ({ params }) => {
-    const [project, setProject] = useState(null);
+const SinglePostPage = ({ params }) => {
+    const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
 
     // Fetch post details and set in state
-  const fetchProject = async () => {
+  const fetchPost= async () => {
     try {
-      const { data: projectData } = await getProject(params.projectId);
-      console.log(projectData)
+      const { data: postData } = await getPost(params.slug);
+      console.log(postData)
 
-      setProject(projectData);
+      setPost(postData);
     } catch (error) {
       console.error("Error fetching post:", error);
     } finally {
       setLoading(false);
     }
   };
-
-  // Fetch project on component mount
   useEffect(() => {
-    fetchProject();
-  }, [params.projectId]);
+    fetchPost();
+  }, [params.postId]);
+
 
   if (loading) {
     return (
@@ -34,16 +34,18 @@ const SingleProjectPage = ({ params }) => {
       </div>
     );
   }
+  console.log(post)
 
-  if (!project) {
-    return <div>Project not found</div>;
+  if (!post) {
+    return <div>Post not found</div>;
   }
 
   return (
     <Container>
-        <ProjectDetails project={project} refetchProject={fetchProject}/>
+        
+        <PostDetails post={post} refetchPost={fetchPost}/>
      </Container>
   )
 }
 
-export default SingleProjectPage;
+export default SinglePostPage;
