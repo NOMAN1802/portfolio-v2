@@ -11,11 +11,26 @@ const journey = [
     // experience
     {
         type: "experience",
+        company:"Bytespate Limited",
+        logoUrl: "/assets/journey/experience/bytespate",
+        position: "Software Engineer",
+        duration: "Nov 2024 - present",
+        description: `
+        Built and maintained full-stack web apps using Next.js, Express.js, and PostgreSQL.
+        Developed RESTful APIs and integrated secure auth with JWT.
+        Improved app performance with caching, lazy loading, and code splitting.
+        Collaborated in agile teams using Git, Jira, and CI/CD pipelines.`
+    },
+    {
+        type: "experience",
         company:"Private",
         logoUrl: "/assets/journey/experience/private.png",
-        position: "Mern Stack Developer",
-        duration: "Sept 2023 - present",
-        description: "Built Full stack website using Next.js,Tailwind CSS,Typescript,Express and Mongoose.Worked on scaleable,user firendly solution"
+        position: "Junior Software Developer",
+        duration: "Sept 2023 - jun 2024",
+        description: `Specialized in swiftly identifying and fixing bugs using version control, debugging tools, and documentation.
+Contributed to server-side development using Express.js, RESTful API development, and database integration and management.
+Utilized Next.js for building server-rendered React applications, improving SEO and performance in projects.
+Employed Redux for state management, enabling scalable, predictable state across complex application components.`
     },
 
     {
