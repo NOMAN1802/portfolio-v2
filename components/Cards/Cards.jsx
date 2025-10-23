@@ -2,19 +2,29 @@
 import Card from "./Card";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs';
 import {motion , AnimatePresence} from "framer-motion";
-import {FaHtml5, FaCss3,FaJs,FaReact } from 'react-icons/fa';
+import {FaHtml5, FaCss3,FaJs,FaReact, FaDocker } from 'react-icons/fa';
 import { DiMongodb } from "react-icons/di";
-import { SiExpress, SiRedux, SiTypescript } from "react-icons/si";
+import { SiExpress, SiPostgresql, SiPrisma, SiRedux, SiTypescript } from "react-icons/si";
 import { RiNextjsFill } from "react-icons/ri";
+
 
 const journey = [
     // experience
+
+    {
+        type: "experience",
+        company:"Bytespate Limited",
+        logoUrl: "/assets/journey/experience/bytespate.png",
+        position: "Software Engineer",
+        duration: "Nov 2024 - Present",
+        description: "Built Full stack website using Next.js,Tailwind CSS,Typescript,Express,Mongoose,Prisma and PostgresSQL.Worked on scaleable,user firendly solution"
+    },
     {
         type: "experience",
         company:"Private",
         logoUrl: "/assets/journey/experience/private.png",
-        position: "Mern Stack Developer",
-        duration: "Sept 2023 - present",
+        position: "Junior Software Developer",
+        duration: "Sept 2023 - June 2024",
         description: "Built Full stack website using Next.js,Tailwind CSS,Typescript,Express and Mongoose.Worked on scaleable,user firendly solution"
     },
 
@@ -22,8 +32,8 @@ const journey = [
         type: "experience",
         company:"a2i",
         logoUrl: "/assets/journey/experience/a2i.png",
-        position: "Young Professional",
-        duration: "Sept 2022 - Jan 2023 ",
+        position: "Young Professional Intern",
+        duration: "October 2022 - Jan 2023 ",
         description: "Manage (TOR)-Term Of Referance -(Data model,ER Diagram,Sequence Diagram) for software development."
     },
 
@@ -122,7 +132,28 @@ const journey = [
         duration: "Learn In 2023",
         description: "MongoDB is a NoSQL database that stores data in flexible, JSON-like documents for scalable, high-performance applications."
     },
-   
+   {
+    type: "skills",
+    name: "Prisma",
+    icon: <SiPrisma/>,
+    duration: "Learn In 2025",
+    description: "Prisma is a next-generation ORM that simplifies database access with type-safe queries and easy schema management."
+  },
+  { 
+    type: "skills",
+    name: "PostgreSQL",
+    icon: <SiPostgresql/>,
+    duration: "Learn In 2025",
+    description: "PostgreSQL is a powerful open-source relational database system known for reliability, performance, and advanced SQL features."
+  },
+  {
+    type: "skills",
+    name: "Docker",
+    icon: <FaDocker />,
+    duration: "Learn In 2025",
+    description: "Docker is a containerization platform that allows developers to package, deploy, and run applications in isolated environments."
+    
+  }
     
 
 ]

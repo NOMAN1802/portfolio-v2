@@ -46,15 +46,15 @@ const LoginPage = () => {
       {isPending && <Loading />}
       
       <div className="flex h-[calc(100vh-200px)] w-full flex-col items-center justify-center">
-        <AnimatedText text="Login to your website" textStyles="h1 mb-2" />
+        <AnimatedText text="Login To Admin Dashboard" textStyles=" h1 mb-2" />
         
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           {/* Email Input */}
           <div className="p-4">
-            <div className="relative">
+            <div className="relative w-full md:w-2/3 mx-auto">
               <MdOutlineAttachEmail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <Input
-                className="pl-10"  
+                className="pl-10 input"  
                 type="email"
                 placeholder="Email"
                 {...register("email", { required: "Email is required" })}
@@ -69,10 +69,10 @@ const LoginPage = () => {
 
           {/* Password Input */}
           <div className="p-4">
-            <div className="relative">
+            <div className="relative w-full md:w-2/3 mx-auto">
               <AiOutlineLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <Input
-                className="pl-10 pr-10"  
+                className="pl-10 pr-10 py-4 input"  
                 type={viewPassword ? "text" : "password"}
                 placeholder="Password"
                 {...register("password", { required: "Password is required" })}
@@ -90,8 +90,8 @@ const LoginPage = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-center p-4">
-            <Button className="w-full rounded-md bg-accent/80 font-semibold  p-2" type="submit">
+          <div className="flex justify-center p-4  mx-auto">
+            <Button className="w-2/3 rounded-md bg-accent/80 font-semibold  p-2" type="submit">
               Login
             </Button>
           </div>

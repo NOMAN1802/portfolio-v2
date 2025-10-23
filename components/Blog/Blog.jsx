@@ -40,7 +40,7 @@ const loadMoreItems = () => {
   setVisibleItem((prev) => prev + 2);
 }
   return (
-    <section className='pt-24 min-h-[1000px]' id='blog' >
+    <section className='pt-24 min-h-screen' id='blog' >
        <div className="container mx-auto">
         <Tabs defaultValue="all" className="w-full flex flex-col">
          <div className="flex flex-col xl:flex-row items-center xl:items-start

@@ -43,7 +43,7 @@ const About = () => {
               />
               </motion.div>
               <div className="absolute text-center text-white">
-              <div className="text-5xl font-bold leading-none">1+</div>
+              <div className="text-5xl font-bold leading-none">2+</div>
               <div className="leading-none text-center">
                 Years of <br /> Experience
               </div>
@@ -74,7 +74,7 @@ const About = () => {
                 <div className="uppercase font-bold text-primary">
                   Age
                 </div>
-                <p>28Years</p>
+                <p>29Years</p>
               </div>
 
                {/* items -2 */}
